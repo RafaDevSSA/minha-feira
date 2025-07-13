@@ -56,11 +56,6 @@ async function addItem(name, category, quantity) {
 
 // Função para atualizar quantidade
 function updateQuantity(itemId, newQuantity) {
-    if (newQuantity < 1) {
-        removeItem(itemId);
-        return;
-    }
-
     db.collection("shoppingItems").doc(itemId).update({ quantity: newQuantity }).then(() => {
         showNotification('Quantidade atualizada!');
     }).catch((error) => {
